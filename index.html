@@ -3,15 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>XC Heatmap</title>
+  <title>Brendan's XC Heatmap</title>
 </head>
 <body>
 <div id="map"></div>
-<h1 style="position: absolute; top: -10px; z-index: 99999; font-family: sans-serif; left: 50px;">My XC Running Heatmap <a href="#">Github</a></h1>
+<h1>My Cross Country Running Heatmap <a href="https://github.com/brendanee/XCHeatmap">Github</a></h1>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Asap:wght@600');
+
   body {
     margin: 0;
   }
+
+  h1 {
+    position: absolute;
+    top: -10px;
+    z-index: 99999;
+    font-family: Asap, sans-serif;
+    left: 50px;
+  }
+
   #map {
     width: 100vw;
     height: 100vh;
@@ -28,14 +39,6 @@ let ACTUAL_DATA =
 ];
 </script>
 <script>
-ACTUAL_DATA = ACTUAL_DATA.filter((e) => {
-  if (e[0] < 47.2080 && e[0] > 47.2074 && e[1] < -122.5372 && e[1] > -122.5382) {
-    console.log('gottem')
-    return false;
-  }
-  return true;
-})
-
 var CartoDB_DarkMatterNoLabels = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png', {
 	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
 	maxZoom: 20,
